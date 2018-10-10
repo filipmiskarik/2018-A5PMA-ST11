@@ -1,0 +1,7 @@
+{
+  "name": "TranslatorST11",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
