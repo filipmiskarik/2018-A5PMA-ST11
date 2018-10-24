@@ -10,9 +10,10 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class HistoryProvider {
-  private historyRecords: Array<HistoryRecord> = []
+  public historyRecords: Array<HistoryRecord> = [];
   constructor(private storage: Storage) {
     console.log('Hello HistoryProvider Provider');
+    this.getHistory();
   }
 
   public saveToHistory(from:string, to:string):void{
@@ -23,7 +24,9 @@ export class HistoryProvider {
   }
   public getHistory():void{
     this.storage.get('history').then(value => {
-     this.historyRecords = JSON.parse(value); 
+      if(value){
+        this.historyRecords = JSON.parse(value); 
+      }
     });
   }
 }
